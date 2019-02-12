@@ -29,8 +29,9 @@ class GenericTableViewCell<View: UIView>: UITableViewCell {
 
     func setUpViews() {
         guard let cellView = cellView else { return }
-        addSubview(cellView)
-//        contentView.addSubview(cellView)
+//        addSubview(cellView)
+        contentView.addSubview(cellView)
+        setNeedsDisplay()
         setNeedsDisplay()
         cellView.pinEdgesToSuperview()
     }

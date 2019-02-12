@@ -21,7 +21,8 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.register(GenericTableViewCell<ExpanderContent>.self, forCellReuseIdentifier: cellId)
+//        tableView.register(GenericTableViewCell<ExpanderContent>.self, forCellReuseIdentifier: cellId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         loadData()
         setupViewConfiguration()
     }
@@ -73,18 +74,29 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId,
-                                                       for: indexPath) as? GenericTableViewCell<ExpanderContent> else {
-            return UITableViewCell()
-        }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId,
+//                                                       for: indexPath) as? GenericTableViewCell<ExpanderContent> else {
+//            return UITableViewCell()
+//        }
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+
+
         let view = labelsItems[indexPath.row]
         view.addTapGestureRecognizer {
             view.updateTexts()
 //            self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            self.tableView.reloadData()
-//            view.setNeedsLayout()
+//            self.tableView.reloadData()
+            cell.setNeedsLayout()
+            UIView.performWithoutAnimation {
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
         }
-        cell.cellView = view
+//        cell.cellView = view
+        cell.addSubview(view)
+        view.pinEdgesToSuperview()
+//        cell.layoutIfNeeded()
         return cell
     }
 }

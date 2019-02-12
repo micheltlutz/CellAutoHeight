@@ -47,7 +47,7 @@
         <!--Collection View-->
         <scene sceneID="qku-Wb-r6b">
             <objects>
-                <viewController id="fy1-W6-saN" sceneMemberID="viewController">
+                <viewController id="fy1-W6-saN" customClass="CollectionTesteViewController" customModule="AutoSizeTests" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0p-sK-3tZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

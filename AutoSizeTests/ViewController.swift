@@ -39,13 +39,31 @@ class ViewController: UIViewController {
         labelsItems.append(ExpanderContent())
         labelsItems.append(ExpanderContent())
         labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
+        labelsItems.append(ExpanderContent())
         tableView.reloadData()
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.estimatedRowHeight
+        return UITableView.automaticDimension
     }
 }
 
@@ -62,12 +80,9 @@ extension ViewController: UITableViewDataSource {
         let view = labelsItems[indexPath.row]
         view.addTapGestureRecognizer {
             view.updateTexts()
-            let hmm = indexPath
-//            print("Index: \(hmm)")
-            self.tableView.reloadRows(at: [hmm], with: UITableView.RowAnimation.automatic)
-
-//            self.tableView.reloadData()
-            view.setNeedsLayout()
+//            self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            self.tableView.reloadData()
+//            view.setNeedsLayout()
         }
         cell.cellView = view
         return cell

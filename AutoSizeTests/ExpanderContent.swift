@@ -9,10 +9,8 @@
 import UIKit
 
 
-class ExpanderContent: UIView {
+class ExpanderContent: UIStackView {
 
-    var heightLabel1: NSLayoutConstraint?
-    var heightLabel2: NSLayoutConstraint?
     let label1: UILabel = {
         let label1 = UILabel(frame: .zero)
         label1.text = "Lorem Ipsum"
@@ -37,8 +35,19 @@ class ExpanderContent: UIView {
 
     init() {
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
-        setupViewConfiguration()
+
+        self.spacing = 3.0
+        axis = .vertical
+        distribution = .fillProportionally
+
+        addArrangedSubview(label1)
+        addArrangedSubview(label2)
+
+        //setupViewConfiguration()
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     func updateTexts() {
@@ -51,40 +60,40 @@ class ExpanderContent: UIView {
         """
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 }
 
 
-extension ExpanderContent: ViewConfiguration {
-    func setupConstraints() {
-        label1.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        label1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        label1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-//        let label1H = label1.text!.heightWithConstrainedWidth(width: ScreenManager.screenWidth() * 0.9, font: label1.font)
-//        heightLabel1 = label1.heightAnchor.constraint(equalToConstant: label1H)
-//        heightLabel1?.isActive = true
-
-        label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 16).isActive = true
-        label2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        label2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        label2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
-//        let label2H = label2.text!.heightWithConstrainedWidth(width: ScreenManager.screenWidth() * 0.9, font: label2.font)
-//        heightLabel2 = label2.heightAnchor.constraint(equalToConstant: label2H)
-//        heightLabel2?.isActive = true
-//        widthAnchor.constraint(equalToConstant: ScreenManager.screenWidth()).isActive = true
-    }
-
-    func buildViewHierarchy() {
-        addSubview(label1)
-        addSubview(label2)
-    }
-
-    func configureViews() {
-        backgroundColor = DevUtils.randomizedColor()
-    }
-}
+//extension ExpanderContent: ViewConfiguration {
+//    func setupConstraints() {
+//        label1.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+//        label1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+//        label1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+////        let label1H = label1.text!.heightWithConstrainedWidth(width: ScreenManager.screenWidth() * 0.9, font: label1.font)
+////        heightLabel1 = label1.heightAnchor.constraint(equalToConstant: label1H)
+////        heightLabel1?.isActive = true
+//
+//        label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 16).isActive = true
+//        label2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+//        label2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+//        label2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
+////        let label2H = label2.text!.heightWithConstrainedWidth(width: ScreenManager.screenWidth() * 0.9, font: label2.font)
+////        heightLabel2 = label2.heightAnchor.constraint(equalToConstant: label2H)
+////        heightLabel2?.isActive = true
+////        widthAnchor.constraint(equalToConstant: ScreenManager.screenWidth()).isActive = true
+//    }
+//
+//    func buildViewHierarchy() {
+//        addSubview(label1)
+//        addSubview(label2)
+//    }
+//
+//    func configureViews() {
+//        backgroundColor = DevUtils.randomizedColor()
+//    }
+//}
 
 import UIKit
 

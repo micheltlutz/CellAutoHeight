@@ -87,7 +87,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             view.updateTexts()
 //            self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
 //            self.tableView.reloadData()
-            cell.setNeedsLayout()
+//            cell.setNeedsLayout()
             UIView.performWithoutAnimation {
                 tableView.beginUpdates()
                 tableView.endUpdates()
@@ -96,6 +96,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 //        cell.cellView = view
         cell.addSubview(view)
         view.pinEdgesToSuperview()
+        cell.prepareForReuse()
 //        cell.layoutIfNeeded()
         return cell
     }

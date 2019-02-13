@@ -18,11 +18,16 @@ class ViewController: UIViewController {
     let cellId = "loren_cell"
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-//        tableView.register(GenericTableViewCell<ExpanderContent>.self, forCellReuseIdentifier: cellId)
+      
+        // O automaticDimension tem q ser no row height e não no estimated =]
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableView.automaticDimension
+      
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+      
         loadData()
         setupViewConfiguration()
     }
@@ -62,13 +67,8 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-}
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return labelsItems.count
     }
